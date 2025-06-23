@@ -1,0 +1,23 @@
+version: "3.1"
+
+stories:
+
+- story: спросить кто снял фильм
+  steps:
+    - intent: ask_film_author
+    - action: action_ask_film_author
+
+- story: узнать информацию о фильме
+  steps:
+    - intent: ask_film_info
+    - action: action_ask_film_info
+
+- story: рекомендации по жанру
+  steps:
+    - intent: recommend_by_genre
+    - action: action_recommend_by_genre
+
+- story: похожие фильмы
+  steps:
+    - intent: similar_films
+    - action: action_similar_films

@@ -1,0 +1,8 @@
+[project]
+name = "dialog"
+version = "0.1.0"
+description = "Add your description here"
+requires-python = ">=3.10"
+dependencies = [
+    "rasa==3.6.21",
+]

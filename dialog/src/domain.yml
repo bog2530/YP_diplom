@@ -1,0 +1,49 @@
+version: "3.1"
+
+intents:
+  - greet
+  - ask_film_author
+  - ask_film_info
+  - recommend_by_genre
+  - similar_films
+
+entities:
+  - film
+  - genre
+
+slots:
+  film:
+    type: text
+    influence_conversation: true
+    mappings:
+      - type: from_entity
+        entity: film
+
+  genre:
+    type: text
+    influence_conversation: true
+    mappings:
+      - type: from_entity
+        entity: genre
+
+
+responses:
+  utter_greet:
+    - text: Привет! Чем могу помочь?
+    - text: Здравствуй! Что интересует?
+    - text: Добро пожаловать! Готов помочь.
+
+actions:
+  - utter_greet
+  - utter_ask_film_author
+  - utter_ask_film_info
+  - utter_recommend_by_genre
+  - utter_similar_films
+  - action_ask_film_author
+  - action_ask_film_info
+  - action_recommend_by_genre
+  - action_similar_films
+
+session_config:
+  session_expiration_time: 60
+  carry_over_slots_to_new_session: true
