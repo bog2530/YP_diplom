@@ -2,13 +2,16 @@ from typing import Any, Text, Dict, List
 from rasa_sdk import Action, Tracker
 from rasa_sdk.executor import CollectingDispatcher
 
+from utils import fetch_films
+
 class ActionAskFilmAuthor(Action):
     def name(self) -> Text:
         return "action_ask_film_author"
 
     def run(self, dispatcher: CollectingDispatcher,
             tracker: Tracker,
-            domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
+            domain: Dict[Text, Any],
+        ) -> List[Dict[Text, Any]]:
 
         film = tracker.get_slot("film")
         if film:
@@ -30,7 +33,8 @@ class ActionAskFilmInfo(Action):
 
     def run(self, dispatcher: CollectingDispatcher,
             tracker: Tracker,
-            domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
+            domain: Dict[Text, Any],
+        ) -> List[Dict[Text, Any]]:
 
         film = tracker.get_slot("film")
         if film:
