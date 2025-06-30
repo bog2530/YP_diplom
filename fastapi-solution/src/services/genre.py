@@ -27,11 +27,24 @@ class GenreService:
             return None
         return result
 
-    async def search(self, *, page_size: int, page_number: int) -> list[Genre]:
+    async def search(self, page_size: int, page_number: int, title = None) -> list[Genre]:
+        if title:
+            query = {
+                "bool": {
+                    "must": [{"match": {"name": title}}],
+                    "filter": []
+                }
+            }
+        else:
+            query = {
+                "match_all": {}
+            }
+
         body = {
-            "query": {"match_all": {}},
-            "sort": [{"name.raw": {"order": "asc"}}],
+            "query": query,
+            "sort": [{"name.raw": {"order": "asc"}}]
         }
+
         response = await self.elastic.search(
             index=self._index,
             size=page_size,

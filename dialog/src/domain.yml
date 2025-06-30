@@ -1,7 +1,7 @@
 version: "3.1"
 
 intents:
-  - greet
+  - great
   - ask_film_author
   - ask_film_info
   - recommend_by_genre
@@ -40,10 +40,6 @@ responses:
 
 actions:
   - utter_greet
-  - utter_ask_film_author
-  - utter_ask_film_info
-  - utter_recommend_by_genre
-  - utter_similar_films
   - action_ask_film_author
   - action_ask_film_info
   - action_recommend_by_genre

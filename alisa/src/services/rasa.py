@@ -18,8 +18,7 @@ class RasaService:
             try:
                 response.raise_for_status()
                 result = await response.json()
-                print(data)
-                print(f"{result}")
                 return result
             except aiohttp.ClientError as error:
-                print(f"Error: {error}")
+                print(error)
+                return None

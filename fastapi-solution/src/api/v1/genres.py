@@ -15,6 +15,7 @@ router = APIRouter(prefix="/genres", tags=["genres"])
 @router.get("/", responses=not_found_404, response_model=list[Genre])
 @cache(expire=120)
 async def get_genres(
+    title: str | None = Query(None),
     page_size: int = Query(10, ge=1, le=100),
     page_number: int = Query(1, ge=1),
     genre_service: GenreService = Depends(get_genre_service),
@@ -22,7 +23,7 @@ async def get_genres(
     """
     Список жанров.
     """
-    genres = await genre_service.search(page_size=page_size, page_number=page_number)
+    genres = await genre_service.search(page_size=page_size, page_number=page_number, title=title)
     if not genres:
         raise HTTPException(status_code=HTTPStatus.NOT_FOUND, detail="genres not found")
     return genres

@@ -20,4 +20,4 @@ class Film(FilmBase):
 
 
 class FilmInternal(Film):
-    permissions: list[PermissionEnum]
+    permissions: str

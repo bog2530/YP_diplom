@@ -4,11 +4,11 @@ from uuid import UUID
 
 from fastapi import APIRouter, Depends, HTTPException, Query
 from fastapi_cache.decorator import cache
-from core.enums import PermissionEnum
 
+# from core.enums import PermissionEnum
 from api.v1.openapi_schemas import not_found_404
 from dependencies import FilmService, GenreService, get_film_service, get_genre_service
-from security import get_permissions
+# from security import get_permissions
 from models.enums import SortOption
 from models.film import Film, FilmBase
 
@@ -39,7 +39,7 @@ async def get_films_by_title(
 @cache(expire=120)
 async def film_details(
     film_id: UUID,
-    permissions: list[PermissionEnum] = Depends(get_permissions),
+    # permissions: list[PermissionEnum] = Depends(get_permissions),
     film_service: FilmService = Depends(get_film_service),
 ) -> Film:
     """Поиск фильма по ID"""
@@ -51,11 +51,11 @@ async def film_details(
             detail="film not found",
         )
 
-    if not all(required_permission in permissions for required_permission in film.permissions):
-        raise HTTPException(
-            status_code=HTTPStatus.FORBIDDEN,
-            detail="Not enough permissions",
-        )
+    # if not all(required_permission in permissions for required_permission in film.permissions):
+    #     raise HTTPException(
+    #         status_code=HTTPStatus.FORBIDDEN,
+    #         detail="Not enough permissions",
+    #     )
 
     return film
 

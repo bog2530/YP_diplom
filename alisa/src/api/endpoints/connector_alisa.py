@@ -23,12 +23,10 @@ async def resend_to_rasa(
             ),
             end_session=True,
         )
-    user_id, user_message = alisa_session.get("user_id", ""), alisa_request.get(
-        "original_utterance", ""
-    )
+    user_id = alisa_session.get("user_id", ""),
+    user_message =  alisa_request.get("original_utterance", "")
     if alisa_session and alisa_session.get("new"):
         rasa_response = await rasa.get_rasa(user_id=user_id, message="/greet")
-        print(rasa_response)
     else:
         rasa_response = await rasa.get_rasa(user_id=user_id, message=user_message)
     list_output = []

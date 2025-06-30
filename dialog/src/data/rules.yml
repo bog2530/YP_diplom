@@ -3,5 +3,5 @@ version: "3.1"
 rules:
   - rule: Приветствие
     steps:
-      - intent: greet
+      - intent: great
       - action: utter_greet

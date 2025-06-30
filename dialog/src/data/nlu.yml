@@ -3,47 +3,415 @@ version: '3.1'
 nlu:
   - intent: great
     examples: |
-      - Привет
-      - Здравствуй
-      - Добрый день
-      - Приветствую
-      - Хай
-      - Здорово
+      - привет
+      - здравствуй
+      - добрый день
+      - приветствую
+      - хай
+      - здорово
+      - салют
+      - добрейшего времени суток
+      - йо
+      - хэллоу
+      - hello
+      - hi there
+      - hey
+      - good morning
+      - good afternoon
+      - доброе утро
+      - добрый вечер
+      - приветик
 
   - intent: ask_film_author
     examples: |
-      - Кто снял
-      - Кто автор
-      - Кто снимал
-      - Кто снял фильм [Начало](film)?
-      - Кто автор фильма [Матрица](film)?
-      - Кто режиссировал [Престиж](film)?
-      - Кто снимал [Интерстеллар](film)?
-      - Кто был режиссером [Гладиатор](film)?
-      - Фильм [Джокер](film) кто снимал?
-      - Назови режиссера фильма [Темный рыцарь](film).
+      - кто снял [star wars](film)
+      - кто снял фильм [начало](film)
+      - кто автор фильма [матрица](film)
+      - кто режиссировал [престиж](film)
+      - кто снимал [интерстеллар](film)
+      - кто был режиссером [гладиатор](film)
+      - фильм [джокер](film)
+      - назови режиссера фильма [темный рыцарь](film)
+      - кто снял [fight club](film)
+      - кто снял фильм [pulp fiction](film)
+      - кто режиссировал [inception](film)
+      - кто снимал [the godfather](film)
+      - кто снял фильм [the lord of the rings](film)
+      - кто снял [1+1](film)
+      - кто снимал [назад в будущее](film)
+      - режиссер фильма [криминальное чтиво](film)
+      - кто автор фильма [операция ы](film)
+      - кто снял [the matrix reloaded](film)
 
   - intent: ask_film_info
     examples: |
-      - Расскажи о фильме [Аватар](film).
-      - Что ты знаешь о фильме [Титаник](film)?
-      - Дай описание фильма [Форрест Гамп](film).
-      - О чем фильм [Список Шиндлера](film)?
-      - Опиши фильм [Зеленая миля](film).
-      - Хочу узнать про фильм [Выживший](film).
+      - расскажи о фильме [аватар](film)
+      - что ты знаешь о фильме [титаник](film)
+      - дай описание фильма [форрест гамп](film)
+      - о чем фильм [список шиндлера](film)
+      - опиши фильм [зеленая миля](film)
+      - хочу узнать про фильм [выживший](film)
+      - что за фильм [the dark knight](film)
+      - расскажи о [the shawshank redemption](film)
+      - что происходит в фильме [12 angry men](film)
+      - информация про фильм [леон](film)
+      - что можешь рассказать о [la la land](film)
+      - опиши сюжет [1+1](film)
+      - расскажи про [the social network](film)
+      - что за сюжет у [крестный отец 2](film)
+      - мне интересен фильм [бесславные ублюдки](film)
 
   - intent: recommend_by_genre
     examples: |
-      - Посоветуй фильм в жанре [фантастика](genre).
-      - Какие фильмы есть в жанре [триллер](genre)?
-      - Хочу посмотреть [драма](genre). Что посоветуешь?
-      - Рекомендованные фильмы по жанру [приключения](genre).
-      - Фильмы жанра [комедия](genre).
+      - посоветуй фильм в жанре [фантастика](genre)
+      - посоветуй фильм в жанре [sci-fi](genre)
+      - какие фильмы есть в жанре [триллер](genre)
+      - какие фильмы есть в жанре [thriller](genre)
+      - хочу посмотреть [драма](genre)
+      - хочу посмотреть [drama](genre)
+      - рекомендованные фильмы по жанру [приключения](genre)
+      - рекомендованные фильмы по жанру [adventure](genre)
+      - фильмы жанра [комедия](genre)
+      - фильмы жанра [comedy](genre)
+      - что посмотреть в жанре [ужасы](genre)
+      - что посмотреть в жанре [horror](genre)
+      - можешь предложить [боевик](genre)
+      - можешь предложить [action](genre)
+      - подскажи фильм из категории [романтика](genre)
+      - подскажи фильм из категории [romance](genre)
+      - что есть интересного из [биография](genre)
+      - что есть интересного из [biography](genre)
+      - есть ли хорошие фильмы жанра [военный](genre)
+      - есть ли хорошие фильмы жанра [war](genre)
+      - посоветуй [исторический](genre)
+      - посоветуй [historical](genre)
+      - интересует жанр [фэнтези](genre)
+      - интересует жанр [fantasy](genre)
+      - подскажи топ фильмов в жанре [детектив](genre)
+      - подскажи топ фильмов в жанре [mystery](genre)
+      - люблю [мелодрама](genre), посоветуй что-нибудь
+      - люблю [melodrama](genre), посоветуй что-нибудь
+      - какие есть фильмы жанра [анимация](genre)
+      - какие есть фильмы жанра [animation](genre)
+      - какие [musical](genre) фильмы ты знаешь
+      - посоветуй что-нибудь из жанра [documentary](genre)
+      - что можешь предложить в жанре [crime](genre)
+
 
   - intent: similar_films
     examples: |
-      - Похожие фильмы на [Бойцовский клуб](film).
-      - Что-то вроде [Хоббит](film).
-      - Найди похожие фильмы на [Игра разума](film).
-      - Что посмотреть после [Социальная сеть](film)?
-      - Фильмы как [Семь](film).
+      - похожие фильмы на [бойцовский клуб](film)
+      - что-то вроде [хоббит](film)
+      - найди похожие фильмы на [игра разума](film)
+      - что посмотреть после [социальная сеть](film)
+      - фильмы как [семь](film)
+      - есть ли что-то похожее на [терминатор 2](film)
+      - что-то в духе [интерстеллар](film)
+      - альтернатива фильму [гравитация](film)
+      - есть фильмы в стиле [дюнкерк](film)
+      - подобные фильмы к [брат 2](film)
+      - мне понравился [зодиак](film)
+      - аналог [the revenant](film)
+      - хочу что-то как [green book](film)
+      - что посмотреть, если понравился [parasite](film)
+      - подскажи фильм в духе [the prestige](film)
+
+  - lookup: film
+    examples: |
+      -the godfather
+      -barbie
+      -oldboy
+      -spider-man
+      -amélie
+      -gone girl
+      -tenet
+      -джокер
+      -se7en
+      -аватар
+      -slumdog millionaire
+      -престиж
+      -the wolf of wall street
+      -the hunger games
+      -black panther
+      -moana
+      -социальная сеть
+      -goodfellas
+      -zodiac
+      -the batman
+      -gone girl
+      -prisoners
+      -avengers: infinity war
+      -harry potter
+      -3 idiots
+      -wall-e
+      -arrival
+      -побег из шоушенка
+      -captain america: the winter soldier
+      -the green mile
+      -the silence of the lambs
+      -requiem for a dream
+      -no country for old men
+      -the great gatsby
+      -forrest gump
+      -движение вверх
+      -spider-man
+      -легенда №17
+      -майор
+      -twilight
+      -the revenant
+      -ликвидация
+      -up
+      -белое солнце пустыни
+      -mad max: fury road
+      -кавказская пленница
+      -матрица
+      -oppenheimer
+      -the social dilemma
+      -карнавальная ночь
+      -the whale
+      -schindler's list
+      -tenet
+      -ирония судьбы
+      -the dark knight
+      -ирония судьбы
+      -argo
+      -выживший
+      -кукушка
+      -iron man
+      -the intouchables
+      -inception
+      -жмурки
+      -blade runner 2049
+      -the social network
+      -1917
+      -fantastic beasts
+      -9 рота
+      -the green mile
+      -the social network
+      -ratatouille
+      -кавказская пленница
+      -moana
+      -брат 2
+      -gladiator
+      -the big short
+      -joker
+      -левиафан
+      -the shawshank redemption
+      -the hateful eight
+      -whiplash
+      -a beautiful mind
+      -the banshees of inisherin
+      -the banshees of inisherin
+      -spotlight
+      -the matrix
+      -семь
+      -her
+      -avengers: endgame
+      -асса
+      -up
+      -soul
+      -interstellar
+      -the theory of everything
+      -кукушка
+      -the revenant
+      -léon
+      -the curious case of benjamin button
+      -утомлённые солнцем
+      -the whale
+      -goodfellas
+      -кин-дза-дза!
+      -blade runner 2049
+      -a beautiful mind
+      -сталкер
+      -arrival
+      -the irishman
+      -ex machina
+      -mad max: fury road
+      -утомлённые солнцем
+      -titanic
+      -the big short
+      -trainspotting
+      -бойцовский клуб
+      -семь
+      -se7en
+      -soul
+      -zodiac
+      -the intouchables
+      -побег из шоушенка
+      -the lord of the rings
+      -doctor strange
+      -django unchained
+      -the grand budapest hotel
+      -асса
+      -dune
+      -joker
+      -солярис
+      -андрей рублёв
+      -frozen
+      -monsters, inc.
+      -the pianist
+      -captain america: the winter soldier
+      -slumdog millionaire
+      -the irishman
+      -catch me if you can
+      -брат
+      -the prestige
+      -москва слезам не верит
+      -la la land
+      -the matrix
+      -fantastic beasts
+      -сибирский цирюльник
+      -майор
+      -the truman show
+      -avengers: endgame
+      -the pianist
+      -the grand budapest hotel
+      -ex machina
+      -once upon a time in hollywood
+      -barbie
+      -адмирал
+      -интерстеллар
+      -ratatouille
+      -легенда №17
+      -cast away
+      -inside out
+      -the departed
+      -стиляги
+      -oppenheimer
+      -the wolf of wall street
+      -3 idiots
+      -12
+      -гладиатор
+      -the prestige
+      -frozen
+      -иди и смотри
+      -стиляги
+      -her
+      -coco
+      -fight club
+      -the shawshank redemption
+      -argo
+      -monsters, inc.
+      -cast away
+      -catch me if you can
+      -солярис
+      -the dark knight
+      -the imitation game
+      -shutter island
+      -trainspotting
+      -fight club
+      -glass onion
+      -prisoners
+      -inception
+      -начало
+      -shutter island
+      -knives out
+      -avengers: infinity war
+      -возвращение
+      -moneyball
+      -spotlight
+      -the lord of the rings
+      -кин-дза-дза!
+      -requiem for a dream
+      -нелюбовь
+      -knives out
+      -schindler's list
+      -джокер
+      -остров
+      -interstellar
+      -титаник
+      -the menu
+      -the curious case of benjamin button
+      -toy story
+      -gladiator
+      -матрица
+      -страна глухих
+      -начало
+      -адмирал
+      -форрест гамп
+      -black panther
+      -forrest gump
+      -pulp fiction
+      -the hateful eight
+      -iron man
+      -whiplash
+      -harry potter
+      -parasite
+      -нелюбовь
+      -don't look up
+      -the king's speech
+      -the imitation game
+      -жмурки
+      -брат
+      -операция ы
+      -pulp fiction
+      -левиафан
+      -the social dilemma
+      -no country for old men
+      -страна глухих
+      -parasite
+      -выживший
+      -the theory of everything
+      -темный рыцарь
+      -сибирский цирюльник
+      -doctor strange
+      -léon
+      -холоп
+      -зеленая миля
+      -the king's speech
+      -аватар
+      -иди и смотри
+      -wall-e
+      -finding nemo
+      -интерстеллар
+      -everything everywhere all at once
+      -the batman
+      -the menu
+      -ликвидация
+      -the great gatsby
+      -inside out
+      -москва слезам не верит
+      -titanic
+      -life of pi
+      -бойцовский клуб
+      -dune
+      -the departed
+      -гладиатор
+      -движение вверх
+      -don't look up
+      -любовь и голуби
+      -социальная сеть
+      -everything everywhere all at once
+      -memento
+      -once upon a time in hollywood
+      -андрей рублёв
+      -glass onion
+      -finding nemo
+      -the godfather
+      -брат 2
+      -toy story
+      -the silence of the lambs
+      -любовь и голуби
+      -la la land
+      -django unchained
+      -титаник
+      -the hunger games
+      -life of pi
+      -возвращение
+      -карнавальная ночь
+      -moneyball
+      -oldboy
+      -остров
+      -amélie
+      -coco
+      -операция ы
+      -форрест гамп
+      -белое солнце пустыни
+      -зеленая миля
+      -холоп
+      -сталкер
+      -the truman show
+      -темный рыцарь
+      -престиж
+      -twilight
+      -memento
