@@ -16,4 +16,4 @@ async def get_aiohttp(request: Request) -> aiohttp.ClientSession:
 def get_rasa_service(
     session: aiohttp.ClientSession = Depends(get_aiohttp),
 ) -> RasaService:
-    return RasaService(session, settings.RASA_URL)
+    return RasaService(session, settings.rasa_url)

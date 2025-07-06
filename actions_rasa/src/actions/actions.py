@@ -4,7 +4,7 @@ from typing import Any, Text, Dict, List
 from rasa_sdk import Action, Tracker
 from rasa_sdk.executor import CollectingDispatcher
 
-from api.films import search_films, film_by_id, search_genre, top_genre, similar
+from api.films import search_genre, top_genre, similar, get_film_data
 
 logger = logging.getLogger(__name__)
 
@@ -22,23 +22,9 @@ class ActionAskFilmAuthor(Action):
         film = tracker.get_slot("film")
         logger.info(f"Полученный слот 'film': {film}")
 
-        if not film:
-            dispatcher.utter_message(text="Пожалуйста, укажи название фильма.")
-            return []
-
-        films = await search_films(film)
-        logger.info(f"Результаты поиска фильмов: {films}")
-
-        if not films:
-            logger.warning(f"Фильм '{film}' не найден.")
-            dispatcher.utter_message(text=f"Фильм '{film}' не найден.")
-            return []
-
-        film_data = await film_by_id(films[0]["uuid"])
-        logger.info(f"Данные по фильму: {film_data}")
+        film_data = await get_film_data(film)
 
         if not film_data:
-            logger.warning(f"Не удалось получить данные по uuid фильма: {films[0]['uuid']}")
             dispatcher.utter_message(text=f"Фильм '{film}' не найден.")
             return []
 
@@ -69,21 +55,9 @@ class ActionAskFilmInfo(Action):
         film = tracker.get_slot("film")
         logger.info(f"Полученный слот 'film': {film}")
 
-        if not film:
-            dispatcher.utter_message(text="Пожалуйста, укажи название фильма.")
-            return []
+        film_data = await get_film_data(film)
 
-        films = await search_films(title=film)
-        logger.info(f"Результаты поиска: {films}")
-
-        if not films:
-            dispatcher.utter_message(text=f"Информация о фильме '{film}' не найдена.")
-            return []
-
-        film_data = await film_by_id(films[0]["uuid"])
-        logger.info(f"Данные по фильму: {film_data}")
         if not film_data:
-            logger.warning(f"Не удалось получить данные по uuid фильма: {films[0]['uuid']}")
             dispatcher.utter_message(text=f"Фильм '{film}' не найден.")
             return []
 
@@ -144,21 +118,13 @@ class ActionSimilarFilms(Action):
         film = tracker.get_slot("film")
         logger.info(f"Полученный слот 'film': {film}")
 
-        if not film:
-            dispatcher.utter_message(text="Пожалуйста, укажи название фильма.")
-            return []
+        film_data = await get_film_data(film)
 
-        films = await search_films(title=film)
-        logger.info(f"Результаты поиска: {films}")
-
-        if not films:
+        if not film_data:
             dispatcher.utter_message(text=f"Фильм '{film}' не найден.")
             return []
 
-        film_id = films[0].get("uuid")
-        logger.info(f"UUID найденного фильма: {film_id}")
-
-        similar_films = await similar(film_id)
+        similar_films = await similar(film_data["uuid"])
         logger.info(f"Похожие фильмы: {similar_films}")
 
         if not similar_films:
@@ -167,6 +133,6 @@ class ActionSimilarFilms(Action):
 
         film_titles = [f.get("title", "Без названия") for f in similar_films]
         dispatcher.utter_message(
-            text=f"Фильмы, похожие на '{film}': {', '.join(film_titles)}."
+            text=f"Фильмы, похожие на '{film['title']}': {', '.join(film_titles)}."
         )
         return []

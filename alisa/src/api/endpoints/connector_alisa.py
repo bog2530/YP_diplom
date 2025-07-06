@@ -13,7 +13,6 @@ async def resend_to_rasa(
 ) -> Alisa:
     """Алиса"""
     data = await request.json()
-    print(data)
     alisa_request = data.get("request", {})
     alisa_session = data.get("session", {})
     if alisa_request["command"].lower() == "стоп":
@@ -35,5 +34,4 @@ async def resend_to_rasa(
             list_output.append(msg.get("text"))
         result = "\n".join(list_output)
         return Alisa(response=TextAlisa(text=result))
-    else:
-        return Alisa(response=TextAlisa(text="Извините, произошла ошибка"))
+    return Alisa(response=TextAlisa(text="Извините, произошла ошибка"))

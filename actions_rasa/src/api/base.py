@@ -1,5 +1,5 @@
 import logging
-from typing import Any
+from typing import Any, Optional, Dict
 import threading
 
 import aiohttp
@@ -18,10 +18,10 @@ def get_client() -> aiohttp.ClientSession:
 async def make_request(
     method: str,
     url: str,
-    params: dict[str, Any] | None = None,
-    json: dict[str, Any] | None = None,
+    params: Dict[str, Any] | None = None,
+    json: Dict[str, Any] | None = None,
     data: Any | None = None,
-) -> dict[str, Any] | None:
+) -> Optional[Dict[str, Any]]:
     try:
         async with get_client().request(
             method=method.upper(),
